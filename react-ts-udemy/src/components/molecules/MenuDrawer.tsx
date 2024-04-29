@@ -1,9 +1,9 @@
 import React, { VFC, memo } from 'react'
-import{Button,Drawer,DrawerOverlay,DrawerContent,DrawerBody} from '@chakra-ui/react'
+import{Button, Drawer, DrawerOverlay, DrawerContent ,DrawerBody} from '@chakra-ui/react'
 
 type Props = {
   onClose:() => void
-  isOpen:() => void
+  isOpen:boolean 
   onClickHome:() => void
   onClickUserManagement:()=>void
   onClickSetting:()=>void

@@ -7,7 +7,7 @@ import { useMessage } from './UseMessage'
 
 export const useAuth = () => {
   const history = useHistory()
-  const showMessage = useMessage()
+  const {showMessage} = useMessage()
   const [loading, setLoading] = useState(false)
   const login = useCallback((id:string) => {
     setLoading(true)
@@ -16,9 +16,10 @@ export const useAuth = () => {
         showMessage({title:'ログインしました',status:'success'})
         history.push('/home')
       }else{
-        alert('ユーザーが見つかりません')
+        showMessage({title:'ユーザーが見つかりません',status:'error'})
       }
-    }).catch(() => alert('ログインできません')).finally(()=>setLoading(false))
-  },[history])
+    }).catch(() =>showMessage({title:'ログインできません',status:'warning'}))
+
+  },[history, showMessage])
   return {login,loading}
 }
