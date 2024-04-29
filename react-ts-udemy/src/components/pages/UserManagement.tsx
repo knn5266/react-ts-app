@@ -11,14 +11,14 @@ import { useSelectUSer } from "../hooks/useSelectUSer";
 export const UserManagement: VFC = memo(() => {
  const {isOpen, onOpen, onClose} = useDisclosure()
   const { getUsers, users, loading } = useAllUsers();
-  const {onSelectUser, selectedUser} = useSelectUSer
-  console.log(selectedUser)
- 
+  const {onSelectUser, selectedUser} = useSelectUSer()
+
   useEffect(() => getUsers(), []);
 
   const onClickUser =useCallback(
     (id:number) => {
-      onSelectUser({id, users, onOpen})},[users, onSelectUser])
+      onSelectUser({id, users, onOpen});
+    },[users, onSelectUser, onOpen]);
 
   return (
     <>
