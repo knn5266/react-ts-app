@@ -7,11 +7,11 @@ type UserGuardProps ={
 }
 
 const UserGuard = ({children}:UserGuardProps) => {
-  const loginUser  = useLoginUser()
+  const LoginUserContext  = useLoginUser()
   const history = useHistory()
 
   //リダイレクト
-  if(loginUser === null && history.location.pathname !== '/' ){
+  if(LoginUserContext.loginUser === null && history.location.pathname !== '/' ){
     history.push('/')
   }
 
