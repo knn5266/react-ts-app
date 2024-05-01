@@ -5,6 +5,7 @@ import { MenuiconButton } from '../../atmos/button/MenuiconButton'
 import { MenuDrawer } from '../../molecules/MenuDrawer'
 import { useHistory } from 'react-router-dom'
 import { useLoginUser } from '../../hooks/useLoginUser'
+import UserGuard from '../../gurads/UserGuard'
 
 export const Header:VFC = memo(() => {
   const { isOpen,onOpen, onClose } = useDisclosure()
@@ -21,7 +22,7 @@ export const Header:VFC = memo(() => {
   ),[])
 
   return (
-    <>
+    <UserGuard>
     <Flex as='nav' bg='teal.500' color='gray.50'align='center' justify='space-between' >
       <Flex align='center' as='a' mr={8} _hover={{cursor:'pointer'}} onClick={onClickHome} >
       <Heading as='h1' fontSize={{base:'md', md:'lg'}} padding={{base:3, md:5}} >ユーザー管理画面アプリ</Heading>
@@ -39,6 +40,6 @@ export const Header:VFC = memo(() => {
       <MenuiconButton onOpen={onOpen} />
     </Flex>
     <MenuDrawer onClose={onClose} isOpen={isOpen} onClickHome={onClickHome} onClickUserManagement={onClickUserManagement} onClickSetting={onClickSetting} onClickLogout={onClickLogout} />
-  </>
+  </UserGuard>
   )
 })
