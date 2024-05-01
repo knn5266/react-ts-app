@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react'
 import { useAuth } from '../hooks/useAuth'
-import { User } from '../../types/api/User'
 import { useHistory } from 'react-router-dom'
 
 type UserGuardProps ={
-  children:((user:User) => ReactNode) | ReactNode
+  children: ReactNode
 }
 
 const UserGuard = ({children}:UserGuardProps) => {
@@ -17,7 +16,7 @@ const UserGuard = ({children}:UserGuardProps) => {
     return null
   }
 
-  return children
+  return <>{children}</>
 }
 
 export default UserGuard
