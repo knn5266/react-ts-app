@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react'
-import { useAuth } from '../hooks/useAuth'
 import { useHistory } from 'react-router-dom'
+import { useAllUsers } from '../hooks/useAllUsers'
 
 type UserGuardProps ={
   children: ReactNode
 }
 
 const UserGuard = ({children}:UserGuardProps) => {
-  const userId = useAuth()
+  const users  = useAllUsers()
   const history = useHistory()
 
   //リダイレクト
-  if(userId === null && history.location.pathname !== '/' ){
+  if(users === null && history.location.pathname !== '/' ){
     history.push('/')
   }
 
