@@ -1,18 +1,18 @@
 import React, { ReactNode } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { User } from '../../types/api/User'
-import { useRouter } from 'next/router'
+import { useHistory } from 'react-router-dom'
 
-type Props ={
-  children:((user:User) => ReactNode) | ReactNode 
+type UserGuardProps ={
+  children:((user:User) => ReactNode) | ReactNode
 }
 
-const UserGuard = ({children}:Props) => {
+const UserGuard = ({children}:UserGuardProps) => {
   const user = useAuth()
-  const router = useRouter()
+  const router = useHistory()
 
   //リダイレクト
-  if(user === null && router.pathname !== '/' ){
+  if(user === null && router.location.pathname !== '/' ){
     router.push('/')
     return null
   }
@@ -25,10 +25,7 @@ const UserGuard = ({children}:Props) => {
   if(typeof children === 'function'){
     //ユーザー情報を渡して実行
   return <>{children}</>
-}else{
-  //そのまま表示
-  return <>{children}</>
-}
+ }
 }
 
 export default UserGuard

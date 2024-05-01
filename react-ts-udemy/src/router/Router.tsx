@@ -7,10 +7,12 @@ import { homeRoutes } from "./HomeRoutes";
 import { Page404 } from "../components/pages/Page404";
 import { HeaderLayout } from "../components/templete/HeaderLayout";
 import { LoginUserProvider } from "../components/providers/LoginUserProvider";
+import UserGuard from "../components/gurads/UserGuard";
 
 export const Router:VFC = memo(() => {
   return (
     <Switch>
+      <UserGuard>
       <LoginUserProvider>
       <Route exact path='/'>
         <Login />
@@ -26,6 +28,7 @@ export const Router:VFC = memo(() => {
       )} >
         </Route>
         </LoginUserProvider>
+        </UserGuard>
         <Route path='*' >
           <Page404 />
         </Route>
