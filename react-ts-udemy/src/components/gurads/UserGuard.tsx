@@ -7,7 +7,7 @@ type UserGuardProps ={
   children:((user:User) => ReactNode) | ReactNode
 }
 
-const UserGuard:JSX.Element | null | undefined | User | ReactNode = ({children}:UserGuardProps) => {
+const UserGuard = ({children}:UserGuardProps) => {
   const user = useAuth()
   const router = useHistory()
 
@@ -17,15 +17,7 @@ const UserGuard:JSX.Element | null | undefined | User | ReactNode = ({children}:
     return null
   }
 
-  //認証確認中
-  if(!user){
-    return null
-  }
-
-  if(typeof children === 'function'){
-    //ユーザー情報を渡して実行
-  return <>{children}</>
- }
+  return children
 }
 
 export default UserGuard

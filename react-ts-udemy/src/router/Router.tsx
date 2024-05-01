@@ -9,6 +9,7 @@ import { HeaderLayout } from "../components/templete/HeaderLayout";
 import { LoginUserProvider } from "../components/providers/LoginUserProvider";
 import UserGuard from "../components/gurads/UserGuard";
 
+
 export const Router:VFC = memo(() => {
   return (
     <Switch>
@@ -28,7 +29,7 @@ export const Router:VFC = memo(() => {
       )} >
         </Route>
         </LoginUserProvider>
-        </UserGuard>
+        </UserGua>
         <Route path='*' >
           <Page404 />
         </Route>
