@@ -29,7 +29,7 @@ export const Router:VFC = memo(() => {
       )} >
         </Route>
         </LoginUserProvider>
-        </UserGua>
+        </UserGuard>
         <Route path='*' >
           <Page404 />
         </Route>
