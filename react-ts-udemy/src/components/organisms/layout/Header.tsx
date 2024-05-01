@@ -4,15 +4,21 @@ import { useDisclosure } from '@chakra-ui/react'
 import { MenuiconButton } from '../../atmos/button/MenuiconButton'
 import { MenuDrawer } from '../../molecules/MenuDrawer'
 import { useHistory } from 'react-router-dom'
+import { useLoginUser } from '../../hooks/useLoginUser'
 
 export const Header:VFC = memo(() => {
   const { isOpen,onOpen, onClose } = useDisclosure()
   const history = useHistory()
 
+  const {setLoginUser} = useLoginUser()
+
   const onClickHome = useCallback(() => history.push('/home'),[])
   const onClickUserManagement = useCallback(() => history.push('/home/user_management'),[])
   const onClickSetting = useCallback(() => history.push('/home/setting'),[])
-  const onClickLogout = useCallback(() => history.push('/'),[])
+  const onClickLogout = useCallback(() => (
+    history.push('/'),
+    setLoginUser(null)
+  ),[])
 
   return (
     <>
