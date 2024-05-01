@@ -7,7 +7,7 @@ type UserGuardProps ={
   children:((user:User) => ReactNode) | ReactNode
 }
 
-const UserGuard = ({children}:UserGuardProps) => {
+const UserGuard:JSX.Element | null | undefined | User | ReactNode = ({children}:UserGuardProps) => {
   const user = useAuth()
   const router = useHistory()
 
