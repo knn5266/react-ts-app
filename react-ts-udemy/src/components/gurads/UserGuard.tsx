@@ -7,13 +7,12 @@ type UserGuardProps ={
 }
 
 const UserGuard = ({children}:UserGuardProps) => {
-  const user = useAuth()
-  const router = useHistory()
+  const userId = useAuth()
+  const history = useHistory()
 
   //リダイレクト
-  if(user === null && router.location.pathname !== '/' ){
-    router.push('/')
-    return null
+  if(userId === null && history.location.pathname !== '/' ){
+    history.push('/')
   }
 
   return <>{children}</>
